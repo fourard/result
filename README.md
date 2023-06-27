@@ -46,7 +46,7 @@ public class PersonService : IPersonService
     public Result<Person, Error> GetPerson()
     {
         var person = new Person() { Name = "Alice" };
-        return new Success<Person, Error>(payload);
+        return new Success<Person, Error>(person);
     }
 }
 ```
@@ -84,7 +84,7 @@ public class PersonService : IPersonService
             }
 
             var person = new Person() { Name = "Alice" };
-            return new Success<Person, Error>(payload);
+            return new Success<Person, Error>(person);
         }
         catch (Exception exception)
         {
@@ -153,7 +153,8 @@ public Person? GetPersonOrDefault()
     return result switch
     {
         Success<Person, Error> success => success.Value,
-        _ => default
+        Failure<Person, Error> failure => default,
+        Unhandled<Person, Error> unhandled => default,
     };
 }
 ```
