@@ -471,3 +471,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Code Coverage
+coveragereport
