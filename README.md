@@ -300,3 +300,39 @@ public void CreateEmployee()
     result.Handle(DoSomethingWithSchedule, LogError, LogException);
 }
 ```
+
+### Auto Deconstruction
+
+**Handle** has a special behavior when the returning type of a result is a tuple.
+
+```csharp
+public Result<(Person, Schedule), Error>? GetPersonAndSchedule()
+{
+    // ...
+}
+
+public Result<Configuration, Error>? DoSomeConfigurationToPersonSchedule(Person person, Schedule schedule)
+{
+    // ...
+}
+
+public void ConfigurePerson()
+{
+    var result = GetPersonAndSchedule().Handle(DoSomeConfigurationToPersonSchedule);
+}
+```
+
+Notice that, the **DoSomeConfigurationToPersonSchedule** method doesn't receive a tuple, but individual parameters.
+You can return up to 8 items in a tuple and get the same behavior.
+
+```csharp
+public Result<(int, int, int, int, int, int, int, int), Error>? GetNumbers()
+{
+    return (1, 2, 3, 4, 5, 6, 7, 8);
+}
+
+public void RunNumbersOperation()
+{
+    var result = GetNumbers().Handle((a, b, c, d, e, f, g, h) => a + b + c + d + e + f + g + h);
+}
+```
