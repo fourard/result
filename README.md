@@ -1,5 +1,11 @@
 # Fourard.Result
 
+[![](https://img.shields.io/nuget/vpre/Fourard.Result)](https://www.nuget.org/packages/Fourard.Result)
+[![](https://img.shields.io/nuget/dt/Fourard.Result)](https://www.nuget.org/packages/Fourard.Result)
+[![](https://img.shields.io/github/license/fourard/result.svg)](https://raw.githubusercontent.com/fourard/result/main/LICENSE)
+[![](https://img.shields.io/github/issues/fourard/result.svg)](https://github.com/fourard/result/issues)
+[![](https://img.shields.io/github/contributors/fourard/result.svg)](https://github.com/fourard/result/graphs/contributors)
+
 A modern implementation of the operation result pattern for C#
 
 ## Setup
