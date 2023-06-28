@@ -336,3 +336,27 @@ public void RunNumbersOperation()
     var result = GetNumbers().Handle((a, b, c, d, e, f, g, h) => a + b + c + d + e + f + g + h);
 }
 ```
+
+### Mapping
+
+You can also map the content of a result to another type.
+
+```csharp
+public Result<int, string> GetInteger()
+{
+}
+
+public void MapIntegerResult()
+{
+    Result<string, string> result = GetInteger().Map(integer => integer.ToString());
+}
+```
+
+The error can be mapped too!
+
+```csharp
+public void MapIntegerResultAndStringError()
+{
+    Result<string, int> result = GetInteger().Map(integer => integer.ToString(), error => int.Parse(error));
+}
+```
