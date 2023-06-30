@@ -8,6 +8,16 @@
 
 A modern implementation of the operation result pattern for C#
 
+## Table of contents
+
+* [Setup](#setup)
+* [Implementation](#implementation)
+* [Consuming the result](#consuming-the-result)
+* [Handling failures and exceptions](#handling-failures-and-exceptions)
+* [Stacking operations](#stacking-operations)
+* [Auto Deconstruction](#auto-deconstruction)
+* [Mapping](#mapping)
+
 ## Setup
 
 Define a type for your expected successful result
@@ -244,9 +254,7 @@ public async Task GetPersonAndDoSomething()
 }
 ```
 
-## Advanced Usage
-
-### Stacking operations
+## Stacking operations
 
 It's very common having a multi-step process, so the **Handle** extension method can be stacked
 
@@ -307,7 +315,7 @@ public void CreateEmployee()
 }
 ```
 
-### Auto Deconstruction
+## Auto Deconstruction
 
 **Handle** has a special behavior when the returning type of a result is a tuple.
 
@@ -343,7 +351,7 @@ public void RunNumbersOperation()
 }
 ```
 
-### Mapping
+## Mapping
 
 You can also map the content of a result to another type.
 
