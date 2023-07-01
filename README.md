@@ -10,13 +10,14 @@ A modern implementation of the operation result pattern for C#
 
 ## Table of contents
 
-* [Setup](#setup)
-* [Implementation](#implementation)
-* [Consuming the result](#consuming-the-result)
-* [Handling failures and exceptions](#handling-failures-and-exceptions)
-* [Stacking operations](#stacking-operations)
-* [Auto Deconstruction](#auto-deconstruction)
-* [Mapping](#mapping)
+- [Setup](#setup)
+- [Implementation](#implementation)
+- [Consuming the result](#consuming-the-result)
+- [Handling failures and exceptions](#handling-failures-and-exceptions)
+- [Stacking operations](#stacking-operations)
+- [Auto Deconstruction](#auto-deconstruction)
+- [Multiple Values Result](#multiple-values-result)
+- [Mapping](#mapping)
 
 ## Setup
 
@@ -348,6 +349,23 @@ public Result<(int, int, int, int, int, int, int, int), Error>? GetNumbers()
 public void RunNumbersOperation()
 {
     var result = GetNumbers().Handle((a, b, c, d, e, f, g, h) => a + b + c + d + e + f + g + h);
+}
+```
+
+### Multiple Values Result
+
+This is nearly the same of returning a tuple result, consider this as an alias.
+
+```csharp
+public Result<Person, Schedule, Error> GetPersonAndSchedule()
+{
+    return (new Person(), new Schedule());
+}
+
+public void ConfigurePerson()
+{
+    var result = GetPersonAndSchedule();
+    result.Handle((person, schedule) => ...);
 }
 ```
 
