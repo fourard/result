@@ -3,51 +3,149 @@ namespace Fourard.Result.Tests
     public class ResultAliasTests
     {
         [Test]
-        public void TestMultipleValuesResultShouldBeInstanceOfTupleResultOf2Values()
+        public void TestMultipleValuesSuccessResultShouldBeInstanceOfTupleResultOf2Values()
         {
             Result<int, int, string> result = (1, 1);
             Assert.That(result, Is.InstanceOf<Result<(int, int), string>>());
         }
 
         [Test]
-        public void TestMultipleValuesResultShouldBeInstanceOfTupleResultOf3Values()
+        public void TestMultipleValuesSuccessResultShouldBeInstanceOfTupleResultOf3Values()
         {
             Result<int, int, int, string> result = (1, 1, 1);
             Assert.That(result, Is.InstanceOf<Result<(int, int, int), string>>());
         }
 
         [Test]
-        public void TestMultipleValuesResultShouldBeInstanceOfTupleResultOf4Values()
+        public void TestMultipleValuesSuccessResultShouldBeInstanceOfTupleResultOf4Values()
         {
             Result<int, int, int, int, string> result = (1, 1, 1, 1);
             Assert.That(result, Is.InstanceOf<Result<(int, int, int, int), string>>());
         }
 
         [Test]
-        public void TestMultipleValuesResultShouldBeInstanceOfTupleResultOf5Values()
+        public void TestMultipleValuesSuccessResultShouldBeInstanceOfTupleResultOf5Values()
         {
             Result<int, int, int, int, int, string> result = (1, 1, 1, 1, 1);
             Assert.That(result, Is.InstanceOf<Result<(int, int, int, int, int), string>>());
         }
 
         [Test]
-        public void TestMultipleValuesResultShouldBeInstanceOfTupleResultOf6Values()
+        public void TestMultipleValuesSuccessResultShouldBeInstanceOfTupleResultOf6Values()
         {
             Result<int, int, int, int, int, int, string> result = (1, 1, 1, 1, 1, 1);
             Assert.That(result, Is.InstanceOf<Result<(int, int, int, int, int, int), string>>());
         }
 
         [Test]
-        public void TestMultipleValuesResultShouldBeInstanceOfTupleResultOf7Values()
+        public void TestMultipleValuesSuccessResultShouldBeInstanceOfTupleResultOf7Values()
         {
             Result<int, int, int, int, int, int, int, string> result = (1, 1, 1, 1, 1, 1, 1);
             Assert.That(result, Is.InstanceOf<Result<(int, int, int, int, int, int, int), string>>());
         }
 
         [Test]
-        public void TestMultipleValuesResultShouldBeInstanceOfTupleResultOf8Values()
+        public void TestMultipleValuesSuccessResultShouldBeInstanceOfTupleResultOf8Values()
         {
             Result<int, int, int, int, int, int, int, int, string> result = (1, 1, 1, 1, 1, 1, 1, 1);
+            Assert.That(result, Is.InstanceOf<Result<(int, int, int, int, int, int, int, int), string>>());
+        }
+
+        [Test]
+        public void TestMultipleValuesFailureResultShouldBeInstanceOfTupleResultOf2Values()
+        {
+            Result<int, int, string> result = "Result<int, int, string>";
+            Assert.That(result, Is.InstanceOf<Result<(int, int), string>>());
+        }
+
+        [Test]
+        public void TestMultipleValuesFailureResultShouldBeInstanceOfTupleResultOf3Values()
+        {
+            Result<int, int, int, string> result = "Result<int, int, int, string>";
+            Assert.That(result, Is.InstanceOf<Result<(int, int, int), string>>());
+        }
+
+        [Test]
+        public void TestMultipleValuesFailureResultShouldBeInstanceOfTupleResultOf4Values()
+        {
+            Result<int, int, int, int, string> result = "Result<int, int, int, int, string>";
+            Assert.That(result, Is.InstanceOf<Result<(int, int, int, int), string>>());
+        }
+
+        [Test]
+        public void TestMultipleValuesFailureResultShouldBeInstanceOfTupleResultOf5Values()
+        {
+            Result<int, int, int, int, int, string> result = "Result<int, int, int, int, int, string>";
+            Assert.That(result, Is.InstanceOf<Result<(int, int, int, int, int), string>>());
+        }
+
+        [Test]
+        public void TestMultipleValuesFailureResultShouldBeInstanceOfTupleResultOf6Values()
+        {
+            Result<int, int, int, int, int, int, string> result = "Result<int, int, int, int, int, int, string>";
+            Assert.That(result, Is.InstanceOf<Result<(int, int, int, int, int, int), string>>());
+        }
+
+        [Test]
+        public void TestMultipleValuesFailureResultShouldBeInstanceOfTupleResultOf7Values()
+        {
+            Result<int, int, int, int, int, int, int, string> result = "Result<int, int, int, int, int, int, int, string>";
+            Assert.That(result, Is.InstanceOf<Result<(int, int, int, int, int, int, int), string>>());
+        }
+
+        [Test]
+        public void TestMultipleValuesFailureResultShouldBeInstanceOfTupleResultOf8Values()
+        {
+            Result<int, int, int, int, int, int, int, int, string> result = "Result<int, int, int, int, int, int, int, int, string>";
+            Assert.That(result, Is.InstanceOf<Result<(int, int, int, int, int, int, int, int), string>>());
+        }
+
+        [Test]
+        public void TestMultipleValuesUnhandledResultShouldBeInstanceOfTupleResultOf2Values()
+        {
+            Result<int, int, string> result = new Exception("Result<int, int, string>");
+            Assert.That(result, Is.InstanceOf<Result<(int, int), string>>());
+        }
+
+        [Test]
+        public void TestMultipleValuesUnhandledResultShouldBeInstanceOfTupleResultOf3Values()
+        {
+            Result<int, int, int, string> result = new Exception("Result<int, int, int, string>");
+            Assert.That(result, Is.InstanceOf<Result<(int, int, int), string>>());
+        }
+
+        [Test]
+        public void TestMultipleValuesUnhandledResultShouldBeInstanceOfTupleResultOf4Values()
+        {
+            Result<int, int, int, int, string> result = new Exception("Result<int, int, int, int, string>");
+            Assert.That(result, Is.InstanceOf<Result<(int, int, int, int), string>>());
+        }
+
+        [Test]
+        public void TestMultipleValuesUnhandledResultShouldBeInstanceOfTupleResultOf5Values()
+        {
+            Result<int, int, int, int, int, string> result = new Exception("Result<int, int, int, int, int, string>");
+            Assert.That(result, Is.InstanceOf<Result<(int, int, int, int, int), string>>());
+        }
+
+        [Test]
+        public void TestMultipleValuesUnhandledResultShouldBeInstanceOfTupleResultOf6Values()
+        {
+            Result<int, int, int, int, int, int, string> result = new Exception("Result<int, int, int, int, int, int, string>");
+            Assert.That(result, Is.InstanceOf<Result<(int, int, int, int, int, int), string>>());
+        }
+
+        [Test]
+        public void TestMultipleValuesUnhandledResultShouldBeInstanceOfTupleResultOf7Values()
+        {
+            Result<int, int, int, int, int, int, int, string> result = new Exception("Result<int, int, int, int, int, int, int, string>");
+            Assert.That(result, Is.InstanceOf<Result<(int, int, int, int, int, int, int), string>>());
+        }
+
+        [Test]
+        public void TestMultipleValuesUnhandledResultShouldBeInstanceOfTupleResultOf8Values()
+        {
+            Result<int, int, int, int, int, int, int, int, string> result = new Exception("Result<int, int, int, int, int, int, int, int, string>");
             Assert.That(result, Is.InstanceOf<Result<(int, int, int, int, int, int, int, int), string>>());
         }
     }
