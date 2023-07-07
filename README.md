@@ -10,13 +10,13 @@ A modern implementation of the operation result pattern for C#
 
 ## Table of contents
 
-* [Setup](#setup)
-* [Implementation](#implementation)
-* [Consuming the result](#consuming-the-result)
-* [Handling failures and exceptions](#handling-failures-and-exceptions)
-* [Stacking operations](#stacking-operations)
-* [Auto Deconstruction](#auto-deconstruction)
-* [Mapping](#mapping)
+- [Setup](#setup)
+- [Implementation](#implementation)
+- [Handling results](#handling-results)
+- [Handling failures and exceptions](#handling-failures-and-exceptions)
+- [Stacking operations](#stacking-operations)
+- [Auto Deconstruction](#auto-deconstruction)
+- [Mapping](#mapping)
 
 ## Setup
 
@@ -137,7 +137,7 @@ public class PersonService : IPersonService
 }
 ```
 
-## Consuming the result
+## Handling results
 
 Using the **is** operator
 
@@ -201,15 +201,9 @@ public void GetPersonAndDoSomething()
 
     switch (result)
     {
-        case Success<Person, Error> success:
-            DoSomethingWithPerson(success.Value);
-            break;
-        case Failure<Person, Error> failure:
-            LogError(failure.Error);
-            break;
-        case Unhandled<Person, Error> unhandled:
-            LogException(unhandled.Exception);
-            break;
+        case Success<Person, Error> success: DoSomethingWithPerson(success.Value); break;
+        case Failure<Person, Error> failure: LogError(failure.Error); break;
+        case Unhandled<Person, Error> unhandled: LogException(unhandled.Exception); break;
     }
 }
 ```
