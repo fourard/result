@@ -29,7 +29,7 @@ public class Person
 }
 ```
 
-Define a type for your expected failure result
+Define a type for your expected failure result (Optional)
 
 ```csharp
 public class Error
@@ -46,7 +46,8 @@ using Fourard.Result;
 
 public interface IPersonService
 {
-    Result<Person, Error> GetPerson();
+    Result<Person> GetPerson();
+    Result<Person, Error> GetPersonOrError();
 }
 ```
 
