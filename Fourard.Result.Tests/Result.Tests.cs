@@ -10,22 +10,43 @@ namespace Fourard.Result.Tests
         {
         }
 
-        [Test]
-        public void TestShouldImplicitlyConvertFromExceptionToSuccessResult()
+        [TestCase(typeof(Payload))]
+        public void TestShouldImplicitlyConvertFromPayloadToSuccessResult(Type TValue)
+        {
+            Result<Payload> result = new Payload();
+            Assert.That(result, Is.InstanceOf<Success<Payload>>());
+        }
+
+        [TestCase(typeof(Payload), typeof(Error))]
+        public void TestShouldImplicitlyConvertFromPayloadToSuccessResult(Type TValue, Type TError)
         {
             Result<Payload, Error> result = new Payload();
             Assert.That(result, Is.InstanceOf<Success<Payload, Error>>());
         }
 
-        [Test]
-        public void TestShouldImplicitlyConvertFromExceptionToFailureResult()
+        [TestCase(typeof(Payload))]
+        public void TestShouldImplicitlyConvertFromErrorToFailureResult(Type TValue)
         {
             Result<Payload, Error> result = new Error();
             Assert.That(result, Is.InstanceOf<Failure<Payload, Error>>());
         }
 
-        [Test]
-        public void TestShouldImplicitlyConvertFromExceptionToUnhandledResult()
+        [TestCase(typeof(Payload), typeof(Error))]
+        public void TestShouldImplicitlyConvertFromErrorToFailureResult(Type TValue, Type TError)
+        {
+            Result<Payload, Error> result = new Error();
+            Assert.That(result, Is.InstanceOf<Failure<Payload, Error>>());
+        }
+
+        [TestCase(typeof(Payload))]
+        public void TestShouldImplicitlyConvertFromExceptionToUnhandledResult(Type TValue)
+        {
+            Result<Payload> result = new Exception();
+            Assert.That(result, Is.InstanceOf<Unhandled<Payload>>());
+        }
+
+        [TestCase(typeof(Payload), typeof(Error))]
+        public void TestShouldImplicitlyConvertFromExceptionToUnhandledResult(Type TValue, Type TError)
         {
             Result<Payload, Error> result = new Exception();
             Assert.That(result, Is.InstanceOf<Unhandled<Payload, Error>>());
