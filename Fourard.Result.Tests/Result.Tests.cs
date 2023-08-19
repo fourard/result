@@ -2,54 +2,46 @@ namespace Fourard.Result.Tests
 {
     public class ResultTests
     {
-        public class Payload
+        [TestCase(typeof(Value))]
+        public void TestShouldImplicitlyConvertFromTValueToSuccessResult(Type TValue)
         {
+            Result<Value> result = new Value();
+            Assert.That(result, Is.InstanceOf<Success<Value>>());
         }
 
-        public class Error
+        [TestCase(typeof(Value), typeof(Error))]
+        public void TestShouldImplicitlyConvertFromTValueToSuccessResult(Type TValue, Type TError)
         {
+            Result<Value, Error> result = new Value();
+            Assert.That(result, Is.InstanceOf<Success<Value, Error>>());
         }
 
-        [TestCase(typeof(Payload))]
-        public void TestShouldImplicitlyConvertFromPayloadToSuccessResult(Type TValue)
-        {
-            Result<Payload> result = new Payload();
-            Assert.That(result, Is.InstanceOf<Success<Payload>>());
-        }
-
-        [TestCase(typeof(Payload), typeof(Error))]
-        public void TestShouldImplicitlyConvertFromPayloadToSuccessResult(Type TValue, Type TError)
-        {
-            Result<Payload, Error> result = new Payload();
-            Assert.That(result, Is.InstanceOf<Success<Payload, Error>>());
-        }
-
-        [TestCase(typeof(Payload))]
+        [TestCase(typeof(Value))]
         public void TestShouldImplicitlyConvertFromErrorToFailureResult(Type TValue)
         {
-            Result<Payload, Error> result = new Error();
-            Assert.That(result, Is.InstanceOf<Failure<Payload, Error>>());
+            Result<Value, Error> result = new Error();
+            Assert.That(result, Is.InstanceOf<Failure<Value, Error>>());
         }
 
-        [TestCase(typeof(Payload), typeof(Error))]
+        [TestCase(typeof(Value), typeof(Error))]
         public void TestShouldImplicitlyConvertFromErrorToFailureResult(Type TValue, Type TError)
         {
-            Result<Payload, Error> result = new Error();
-            Assert.That(result, Is.InstanceOf<Failure<Payload, Error>>());
+            Result<Value, Error> result = new Error();
+            Assert.That(result, Is.InstanceOf<Failure<Value, Error>>());
         }
 
-        [TestCase(typeof(Payload))]
+        [TestCase(typeof(Value))]
         public void TestShouldImplicitlyConvertFromExceptionToUnhandledResult(Type TValue)
         {
-            Result<Payload> result = new Exception();
-            Assert.That(result, Is.InstanceOf<Unhandled<Payload>>());
+            Result<Value> result = new Exception();
+            Assert.That(result, Is.InstanceOf<Unhandled<Value>>());
         }
 
-        [TestCase(typeof(Payload), typeof(Error))]
+        [TestCase(typeof(Value), typeof(Error))]
         public void TestShouldImplicitlyConvertFromExceptionToUnhandledResult(Type TValue, Type TError)
         {
-            Result<Payload, Error> result = new Exception();
-            Assert.That(result, Is.InstanceOf<Unhandled<Payload, Error>>());
+            Result<Value, Error> result = new Exception();
+            Assert.That(result, Is.InstanceOf<Unhandled<Value, Error>>());
         }
     }
 }
