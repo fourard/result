@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <PackageId>Fourard.Result</PackageId>
-    <Version>1.0.5</Version>
+    <Version>1.0.6</Version>
     <Authors>Fourard</Authors>
     <PackageDescription>A modern implementation of the operation result pattern for C#</PackageDescription>
     <RepositoryUrl>https://github.com/fourard/result</RepositoryUrl>
@@ -12,6 +12,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <WarningsAsErrors>Nullable</WarningsAsErrors>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
