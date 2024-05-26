@@ -60,10 +60,10 @@ using Fourard.Result;
 
 public class PersonService : IPersonService
 {
-    public Result<Person, Error> GetPerson()
+    public Result<Person> GetPerson()
     {
         var person = new Person() { Name = "Alice" };
-        return new Success<Person, Error>(person);
+        return new Success<Person>(person);
     }
 }
 ```
@@ -75,7 +75,7 @@ using Fourard.Result;
 
 public class PersonService : IPersonService
 {
-    public Result<Person, Error> GetPerson()
+    public Result<Person> GetPerson()
     {
         return new Person() { Name = "Alice" };
     }
@@ -85,13 +85,15 @@ public class PersonService : IPersonService
 Handling successes, failures and exceptions
 
 ```csharp
+using Fourard.Result;
+
 public class PersonService : IPersonService
 {
     public Result<Person, Error> GetPerson()
     {
         try
         {
-            // execute some validation
+            // some validation
             var valid = true;
 
             if (!valid)
@@ -114,13 +116,15 @@ public class PersonService : IPersonService
 Again, the implicit version
 
 ```csharp
+using Fourard.Result;
+
 public class PersonService : IPersonService
 {
     public Result<Person, Error> GetPerson()
     {
         try
         {
-            // execute some validation
+            // some validation
             var valid = true;
 
             if (!valid)
@@ -134,6 +138,33 @@ public class PersonService : IPersonService
         {
             return exception;
         }
+    }
+}
+```
+
+Using commands to simplify even more
+
+```csharp
+using Fourard.Result;
+
+using static Fourard.Result.Commands;  // new line added here
+
+public class PersonService : IPersonService
+{
+    public Result<Person, Error> GetPerson()
+    {
+	    // Exec will catch any unhandled exception and return the appropriate result
+        return Exec(() => {
+            // some validation
+            var valid = true;
+
+            if (!valid)
+            {
+                return new Error() { Code = "ERROR_CODE", Message = "ERROR_MESSAGE" };
+            }
+
+            return new Person() { Name = "Alice" };
+        });
     }
 }
 ```
