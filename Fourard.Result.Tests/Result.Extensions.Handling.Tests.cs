@@ -1,6 +1,6 @@
 namespace Fourard.Result.Tests
 {
-    public class ResultExtensionsValueTests
+    public partial class ExtensionsTests
     {
         [TestCase(typeof(Value))]
         public void TestHandleShouldCallSuccessCallbackOnly(Type TValue)

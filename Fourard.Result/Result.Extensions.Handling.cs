@@ -1,6 +1,6 @@
 namespace Fourard.Result
 {
-    public static partial class ResultExtensions
+    public static partial class Extensions
     {
         public static TReturn? Handle<TValue, TReturn>(this Result<TValue>? result, Func<TValue, TReturn> success, Action<Exception>? unhandled = null)
         {

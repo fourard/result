@@ -1,6 +1,6 @@
 namespace Fourard.Result.Tests
 {
-    public class ResultExtensionsMappingTests
+    public partial class ExtensionsTests
     {
         [TestCase(typeof(Value))]
         public void TestMapSuccessTypeOfSuccessResult(Type TValue)

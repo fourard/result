@@ -1,6 +1,6 @@
 namespace Fourard.Result.Tests
 {
-    public class ResultExtensionsDeconstructionTests
+    public partial class ExtensionsTests
     {
         [Test]
         public void TestHandleDeconstruction1() // TReturn? Handle<TValue1, TValue2, TReturn>(this Result<(TValue1, TValue2)>? result, Func<TValue1, TValue2, TReturn> success, Action<Exception>? unhandled = null)

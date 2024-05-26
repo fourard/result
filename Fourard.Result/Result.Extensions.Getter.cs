@@ -1,6 +1,6 @@
 namespace Fourard.Result
 {
-    public static partial class ResultExtensions
+    public static partial class Extensions
     {
         public static TValue? GetValueOrDefault<TValue>(this Result<TValue>? result)
         {

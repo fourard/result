@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Fourard.Result
 {
-    public static partial class ResultExtensions
+    public static partial class Extensions
     {
         [return: NotNullIfNotNull(nameof(result))]
         public static Result<TNewValue>? Map<TValue, TNewValue>(this Result<TValue>? result, Func<TValue, TNewValue> success)
