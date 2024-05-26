@@ -4,7 +4,7 @@ using static Fourard.Result.Commands;
 
 namespace Fourard.Result.Tests
 {
-    public partial class ExecuteTests
+    public partial class CommandsTests
     {
         [TestCase(typeof(Value))]
         public void TestExecShouldReturnSuccessResult(Type TValue)

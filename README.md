@@ -153,7 +153,7 @@ public class PersonService : IPersonService
 {
     public Result<Person, Error> GetPerson()
     {
-	    // Exec will catch any unhandled exception and return the appropriate result
+        // Exec will catch any unhandled exception and return the appropriate result
         return Exec(() => {
             // some validation
             var valid = true;
@@ -186,6 +186,19 @@ public Person? GetPersonOrDefault()
     }
 
     return default;
+}
+```
+
+Using **assertion** methods
+
+```csharp
+public Person? GetPersonOrDefault()
+{
+    var service = new PersonService();
+
+    var result = service.GetPerson();
+
+    return result.IsSuccess(out var value) ? value : default;
 }
 ```
 
